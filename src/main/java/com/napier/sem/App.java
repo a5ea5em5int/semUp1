@@ -51,11 +51,31 @@ public class App
 
 
     }
+    public ArrayList<CapitalCityReport>  getCitiesBtPop() throws SQLException {    String sql ="select c.Name,co.Name,c.Population from country as co, city as c where co.Code =c.CountryCode order by c.Population desc limit 5";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        ResultSet rset = pstmt.executeQuery();
+        ArrayList<CapitalCityReport>  capitals = new ArrayList<CapitalCityReport>();
+        while(rset.next())
+        {
+            capitals.add(new CapitalCityReport(rset.getString(1),rset.getString(2),rset.getString(3)));
+        }
+    return capitals;
+    }
+    public void displayCapitalCity(ArrayList<CapitalCityReport> capitals)
+    {
+       for (CapitalCityReport crp: capitals)
+       {
+           System.out.println(crp.getName()+"\t"+crp.getCountry()+"\t"+crp.getPopulation());
+       }
+
+    }
     public static void main(String[] args) throws SQLException {
         App app= new App();
         app.connect();
         ArrayList<Country> courntryList = app.getAllCountriesInfobyPopulation();
         app.display(courntryList);
+
+
         app.disConnect();
 
     }
