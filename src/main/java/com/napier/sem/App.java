@@ -74,7 +74,7 @@ public class App
     public static void main(String[] args) throws SQLException {
         App app = new App();
 
-        if(args.length < 1){
+       if(args.length < 1){
             app.connect("localhost:33060", 0);
         }else{
             app.connect("db:3306", 30000);
