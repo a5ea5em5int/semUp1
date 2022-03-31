@@ -36,7 +36,7 @@
                 <configuration>
                     <printSummary>true</printSummary>
                 </configuration>
-                <version>2.22.2</version>
+                <version>3.0.0-M5</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.junit.platform</groupId>
