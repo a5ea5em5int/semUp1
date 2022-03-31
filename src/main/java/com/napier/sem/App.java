@@ -77,7 +77,7 @@ public class App
        if(args.length < 1){
             app.connect("localhost:33060", 0);
         }else{
-            app.connect("db:3306", 30000);
+            app.connect(args[0], Integer.parseInt(args[1]));
         }
         ArrayList<Country> courntryList = app.getAllCountriesInfobyPopulation();
         app.display(courntryList);
